@@ -1,10 +1,7 @@
-﻿abstract class INotification 
-{
-    abstract public void Send(string message);
-}
-class EmailNotification : INotification { public override void Send(string message) => Console.WriteLine($"Email sent: {message}"); }
-class SMSNotification : INotification { public override void Send(string message) => Console.WriteLine($"SMS sent: {message}"); }
-class PushNotification : INotification { public override void Send(string message) => Console.WriteLine($"Push sent: {message}"); }
+﻿abstract class NotificationBase { abstract public void Send(string message); }
+class EmailNotification : NotificationBase { public override void Send(string message) => Console.WriteLine($"Email sent: {message}"); }
+class SMSNotification : NotificationBase { public override void Send(string message) => Console.WriteLine($"SMS sent: {message}"); }
+class PushNotification : NotificationBase { public override void Send(string message) => Console.WriteLine($"Push sent: {message}"); }
 class NotificationFactory {
     private static NotificationFactory _instance;
     private static Object _lock = new Object();
@@ -22,7 +19,7 @@ class NotificationFactory {
             }
         } 
     }
-    public INotification CreateNotification(string type) {
+    public NotificationBase CreateNotification(string type) {
         return type switch {
             "email" => new EmailNotification(),
             "sms" => new SMSNotification(),
