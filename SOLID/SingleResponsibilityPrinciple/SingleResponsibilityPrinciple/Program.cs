@@ -28,7 +28,7 @@ class ConsoleUserPresenter
 
 class UserFileSaver
 {
-    private string _filePath = "D:\\PROGRAMS\\VSTUDIOFOLDER\\PROJECTS_FOLDER\\PaternsProjects\\SOLID\\SingleResponsibilityPrinciple\\user.txt";
+    private string _filePath = "/home/kirilo/RiderProjects/Paterns/SOLID/SingleResponsibilityPrinciple/SingleResponsibilityPrinciple/user.txt";
     public void SaveUser(User user)
     {
         using (var writer = new System.IO.StreamWriter(_filePath, true))
